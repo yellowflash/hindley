@@ -12,7 +12,7 @@ object Parser extends RegexParsers {
 
   def literal = "[a-zA-Z][^\\\\ .()]*".r
 
-  def parse(expr:String) = parseAll(expression, expr) match {
+  def parse(expr:String):Expression = parseAll(expression, expr) match {
     case Success(result, _) => result
     case Failure(msg, _) => throw new RuntimeException(msg)
     case Error(msg, _) => throw new RuntimeException(msg)
