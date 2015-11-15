@@ -1,7 +1,13 @@
 package hindley
 
+import scala.io.Source
+
 object Main {
   def main(args:Array[String]): Unit = {
-    println (Parser.parse("\\func.\\arg. func func arg"))
+    Source.fromInputStream(System.in)
+          .getLines()
+          .foreach(line => {
+              println(Parser.parse(line).reduce())
+           })
   }
 }
